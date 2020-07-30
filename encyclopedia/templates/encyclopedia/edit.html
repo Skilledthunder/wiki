@@ -1,0 +1,28 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit
+{% endblock %}
+
+{% block body %}
+    <h1>Editing...</h1>
+    <a href="https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax" 
+    target="_blank">
+        <p>Markdown info</p>
+    </a>
+    <br>
+    <form name="edit/{{item}}" action="edit.html" method="POST">
+        {% csrf_token %}
+        <label for="title"><h5>Title:</h5></label>
+        <br>
+        <input type="text" name="title" value="{{ item }}">
+        <br><br>
+        <label for="new_data">Edit text:</label>
+        <br>
+        <textarea name="new_data">{{ content }}
+        </textarea>
+        <input type="submit" />
+    </form>
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    New Page
+{% endblock %}
+
+{% block body %}
+    <h1>Create a new page</h1>
+    <a href="https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax" 
+    target="_blank">
+        <p>Markdown info</p>
+    </a>
+    <br>
+
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form name="new_page" action="{% url 'encyclopedia:new_page' %}" method="POST">
+        {% csrf_token %}
+        <label for="title"><h5>Title:</h5></label>
+        <br>
+        <input type="text" name="title">
+        <br><br>
+        <label for="new_data">Enter text:</label>
+        <br>
+        <textarea name="new_data">Please enter text...
+        </textarea>
+        <input type="submit" />
+    </form>
+
+
+{% endblock %}

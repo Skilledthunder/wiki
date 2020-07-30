@@ -1,0 +1,11 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ item }}
+{% endblock %}
+
+{% block body %}
+    {{ html | safe }}
+
+    <a href="http://127.0.0.1:8000/edit/{{ item }}" method="GET"><button>Edit</button></a>
+{% endblock %}
